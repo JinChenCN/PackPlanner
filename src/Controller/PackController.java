@@ -7,19 +7,23 @@ import Service.PackService;
 
 public class PackController {
 	public static void main(String[] args) {
-		if (args.length != 1) {
-			System.out.print("Please specific input file path!");
-			return;
-		}
-		String filePath = args[0];
-		File file = new File(filePath);
+		String testFilePath = System.getProperty("user.dir") + "/tests";
+		File file = new File(testFilePath);
 		if (!file.exists()) {
-			System.out.print("Can't find input file: " + filePath);
+			System.out.print("Can't find: " + testFilePath);
 			return;
 		}
-		PackService service = new PackService();
-		System.out.println("Process start!");
-		service.process(file);
-		System.out.println("Process finish!");
+		if (!file.isDirectory()) {
+			System.out.print(testFilePath + " isn't directory");
+			return;
+		}
+		File[] files = file.listFiles();
+		for (File subFile : files) {
+			if (subFile.isFile()) {
+				System.out.println("Input: " + subFile.getAbsolutePath());
+				PackService service = new PackService();
+				service.process(subFile);				
+			}
+		}
 	}
 }

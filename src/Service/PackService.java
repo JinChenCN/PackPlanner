@@ -17,7 +17,7 @@ public class PackService {
 	private Stack<Item> tempInputItems;
 	private PackConfig config;
 	private List<Pack> packs;
-	private static int id = 1;
+	private int id = 1;
 	private double maxItemWeight = 0.0;
 	private String splitBy = ",";
 
@@ -38,6 +38,7 @@ public class PackService {
 			
 		}
 		Iterator<Pack> iterator = packs.iterator();
+		System.out.println("Output: ");
 		while (iterator.hasNext()) {
 			Pack pack = iterator.next();
 			System.out.println("Pack Number: " + pack.getId());
@@ -142,29 +143,29 @@ public class PackService {
 			int tempPieces = Integer.parseInt(maxPieces);
 			if (tempPieces < 1) {
 				System.out.println("The max items limit in the Pack is inputed as: " + maxPieces);
-				System.out.println("[max pieces per pack] should be larger than 0");
+				System.out.println("[max pieces per pack] should be larger than 0.");
 				return false;
 			} else {
 				config.setMaxPieces(tempPieces);
 			}
 		} catch (Exception e) {
-			System.out.println("Wrong config of Pack: " + maxPieces);
-			System.out.println("[max pieces per pack] should be int type");
+			System.out.println("The max items limit in the Pack is inputed as: " + maxPieces);
+			System.out.println("[max pieces per pack] should be int.");
 			return false;
 		}
 		String maxWeight = input[2].trim();
 		try {
 			double tempWeight = Double.parseDouble(maxWeight);
 			if (tempWeight <= 0) {
-				System.out.println("Wrong config of Pack: " + maxPieces);
-				System.out.println("[max weight per pack] should be larger than 0.0");
+				System.out.println("The max weight limit in the Pack is inputed as: " + maxWeight);
+				System.out.println("[max weight per pack] should be larger than 0.0.");
 				return false;
 			} else {
 				config.setMaxWeight(tempWeight);
 			}
 		} catch (Exception e) {
-			System.out.println("Wrong config of Pack: " + maxWeight);
-			System.out.println("[max weight per pack] should be numeric type");
+			System.out.println("The max weight limit in the Pack is inputed as:  " + maxWeight);
+			System.out.println("[max weight per pack] should be numeric type.");
 			return false;
 		}
 		return true;
@@ -174,13 +175,13 @@ public class PackService {
 		String line = "";
 		while ((line = br.readLine()) != null) {
 			if ("".equals(line.trim())) {
-				System.out.println("Finish reading the input file");
+				System.out.println("Finish reading the input file.");
 				return true;
 			}
 			String[] itemInput = line.split(splitBy);
 			if (itemInput.length != 4) {
-				System.out.println("Wrong config of Item: " + line);
-				System.out.println("Please config item like this:");
+				System.out.println("Invalid format of input: " + line);
+				System.out.println("The right format should be as follow:");
 				System.out.println("[item id],[item length],[item quantity],[piece weight]");
 				return false;
 			} else {
@@ -189,54 +190,54 @@ public class PackService {
 				try {
 					int tempId = Integer.parseInt(itemId);
 					if (tempId < 1) {
-						System.out.println("Wrong config of Item: " + itemId);
-						System.out.println("[item id] should be larger than 0");
+						System.out.println("Invalid item id: " + itemId);
+						System.out.println("[item id] should be larger than 0.");
 						return false;
 					} else {
 						item.setId(tempId);
 					}
 				} catch (Exception e) {
-					System.out.println("Wrong config of Item: " + itemId);
-					System.out.println("[item id] should be int type");
+					System.out.println("Invalid item id: " + itemId);
+					System.out.println("[item id] should be int.");
 					return false;
 				}
 				String itemLength = itemInput[1].trim();
 				try {
 					double tempLength = Double.parseDouble(itemLength);
 					if (tempLength <= 0) {
-						System.out.println("Wrong config of Item: " + tempLength);
+						System.out.println("Invalid item length: " + tempLength);
 						System.out
-								.println("[item length] should be larger than 0.0");
+								.println("[item length] should be larger than 0.0.");
 						return false;
 					} else {
 						item.setLength(tempLength);
 					}
 				} catch (Exception e) {
-					System.out.println("Wrong config of Item: " + itemLength);
-					System.out.println("[item length] should be numeric type");
+					System.out.println("Invalid item length: " + itemLength);
+					System.out.println("[item length] should be numeric type.");
 					return false;
 				}
 				String itemQuantity = itemInput[2].trim();
 				try {
 					int tempQuantity = Integer.parseInt(itemQuantity);
 					if (tempQuantity < 1) {
-						System.out.println("Wrong config of Item: " + itemQuantity);
-						System.out.println("[item quantity] should be larger than 0");
+						System.out.println("Invalid item quantity: " + itemQuantity);
+						System.out.println("[item quantity] should be larger than 0.");
 						return false;
 					} else {
 						item.setQuantity(tempQuantity);
 					}
 				} catch (Exception e) {
-					System.out.println("Wrong config of Item: " + itemQuantity);
-					System.out.println("[item quantity] should be numeric type");
+					System.out.println("Invalid item quantity: " + itemQuantity);
+					System.out.println("[item quantity] should be numeric type.");
 					return false;
 				}
 				String pieceWeight = itemInput[3].trim();
 				try {
 					double tempWeight = Double.parseDouble(pieceWeight);
 					if (tempWeight <= 0) {
-						System.out.println("Wrong config of Item: " + pieceWeight);
-						System.out.println("[item weight] should be larger than 0.0");
+						System.out.println("Invalid item weight: " + pieceWeight);
+						System.out.println("[item weight] should be larger than 0.0.");
 						return false;
 					} else {
 						if (maxItemWeight < tempWeight) {
@@ -245,8 +246,8 @@ public class PackService {
 						item.setWeight(tempWeight);
 					}
 				} catch (Exception e) {
-					System.out.println("Wrong config of Item: " + pieceWeight);
-					System.out.println("[item weight] should be numeric type");
+					System.out.println("Invalid item weight: " + pieceWeight);
+					System.out.println("[item weight] should be numeric type.");
 					return false;
 				}
 				inputItems.add(item);
@@ -257,7 +258,7 @@ public class PackService {
 			return false;
 		}
 		if (config.getMaxWeight() < maxItemWeight) {
-			System.out.println("Max weight per pack should larger than max weight per item!");
+			System.out.println("Max weight per pack should be larger than max weight per item!");
 			return false;
 		}
 		return true;
@@ -276,8 +277,8 @@ public class PackService {
 					continue;
 				} else {
 					if (input.length != 3) {
-						System.out.println("Wrong config of Pack: " + line);
-						System.out.println("Please config pack like this:");
+						System.out.println("Invalid format of input data: " + line);
+						System.out.println("The right format should be as follow:");
 						System.out.println("[Sort order],[max pieces per pack],[max weight per pack]");
 						return false;
 					} else {
