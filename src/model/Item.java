@@ -2,19 +2,19 @@ package model;
 
 public class Item {
 	private int id;
-	private float length;
+	private double length;
 	private int quantity;
-	private float weight;
+	private double weight;
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public float getLength() {
+	public double getLength() {
 		return length;
 	}
-	public void setLength(float length) {
+	public void setLength(double length) {
 		this.length = length;
 	}
 	public int getQuantity() {
@@ -23,11 +23,10 @@ public class Item {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	public float getWeight() {
+	public double getWeight() {
 		return weight;
 	}
-	public void setWeight(float weight) {
+	public void setWeight(double weight) {
 		this.weight = weight;
 	}
-	
 }

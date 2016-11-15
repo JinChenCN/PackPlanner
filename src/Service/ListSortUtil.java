@@ -13,12 +13,12 @@ public class ListSortUtil {
 
 		Collections.sort(list, new Comparator<Item>() {  
             public int compare(Item arg0, Item arg1) {  
-                float length0 = arg0.getLength();
-                float length1 = arg1.getLength();
+                double length0 = arg0.getLength();
+                double length1 = arg1.getLength();
                 if ("SHORT_TO_LONG".equals(sortMode)) {
-                	return Float.compare(length0, length1);
+                	return Double.compare(length0, length1);
                 } else {
-                	return Float.compare(length1, length0);
+                	return Double.compare(length1, length0);
                 } 
             }  
         }); 

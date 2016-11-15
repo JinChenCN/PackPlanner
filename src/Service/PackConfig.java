@@ -3,7 +3,7 @@ package Service;
 public class PackConfig {
 	private String sortOrder;
 	private int maxPieces;
-	private float maxWeight;
+	private double maxWeight;
 	public String getSortOrder() {
 		return sortOrder;
 	}
@@ -16,10 +16,10 @@ public class PackConfig {
 	public void setMaxPieces(int maxPieces) {
 		this.maxPieces = maxPieces;
 	}
-	public float getMaxWeight() {
+	public double getMaxWeight() {
 		return maxWeight;
 	}
-	public void setMaxWeight(float maxWeight) {
+	public void setMaxWeight(double maxWeight) {
 		this.maxWeight = maxWeight;
 	}
 	

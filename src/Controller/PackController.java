@@ -18,6 +18,7 @@ public class PackController {
 			return;
 		}
 		PackService service = new PackService();
+		System.out.println("Process start!");
 		service.process(file);
 		System.out.println("Process finish!");
 	}

@@ -1,26 +1,25 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Stack;
 
 public class Pack {
 	private int id;
-	private float length;
+	private double length;
 	private int maxPieces;
 	private int availablePieces;
-	private float maxWeight;
-	private float availableWeight;
+	private double maxWeight;
+	private double availableWeight;
 	private boolean isFull;
-	private List<Item> items;
+	private Stack<Item> items;
 	
-	public Pack(int id, int maxPieces, float maxWeight) {
+	public Pack(int id, int maxPieces, double maxWeight) {
 		this.id = id;
 		this.maxPieces = maxPieces;
 		this.availablePieces = maxPieces;
 		this.maxWeight = maxWeight;
 		this.availableWeight = maxWeight;
 		this.isFull = false;
-		this.items = new ArrayList<Item>();
+		this.items = new Stack<Item>();
 	}
 
 	public int getId() {
@@ -31,11 +30,11 @@ public class Pack {
 		this.id = id;
 	}
 
-	public float getLength() {
+	public double getLength() {
 		return length;
 	}
 
-	public void setLength(float length) {
+	public void setLength(double length) {
 		this.length = length;
 	}
 
@@ -55,19 +54,19 @@ public class Pack {
 		this.availablePieces = availablePieces;
 	}
 
-	public float getMaxWeight() {
+	public double getMaxWeight() {
 		return maxWeight;
 	}
 
-	public void setMaxWeight(float maxWeight) {
+	public void setMaxWeight(double maxWeight) {
 		this.maxWeight = maxWeight;
 	}
 
-	public float getAvailableWeight() {
+	public double getAvailableWeight() {
 		return availableWeight;
 	}
 
-	public void setAvailableWeight(float availableWeight) {
+	public void setAvailableWeight(double availableWeight) {
 		this.availableWeight = availableWeight;
 	}
 
@@ -79,11 +78,12 @@ public class Pack {
 		this.isFull = isFull;
 	}
 
-	public List<Item> getItems() {
+	public Stack<Item> getItems() {
 		return items;
 	}
 
-	public void setItems(List<Item> items) {
+	public void setItems(Stack<Item> items) {
 		this.items = items;
 	}
+
 }
